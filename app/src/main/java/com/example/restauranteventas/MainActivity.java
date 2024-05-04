@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ArrayList<ProductosItems> alItems = new ArrayList<>();
-        alItems.add(new ProductosItems("Refresco", "2.000", R.drawable.bebida));
-        alItems.add(new ProductosItems("Malteada", "2.001", R.drawable.bebida));
-        alItems.add(new ProductosItems("Café", "2.002", R.drawable.bebida));
+        alItems.add(new ProductosItems("Refresco", "$2.000", R.drawable.bebida));
+        alItems.add(new ProductosItems("Malteada", "$2.001", R.drawable.bebida));
+        alItems.add(new ProductosItems("Café", "$2.002", R.drawable.bebida));
 
         //Activación de reyclerview y asignación del adaapter
         rcvVista = findViewById(R.id.recyclerView);
