@@ -7,18 +7,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    RecyclerView rcvVista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        ArrayList<ProductosItems> alItems = new ArrayList<>();
+        alItems.add(new ProductosItems("Refresco", "2.000", R.drawable.bebida));
+        alItems.add(new ProductosItems("Malteada", "2.001", R.drawable.bebida));
+        alItems.add(new ProductosItems("Café", "2.002", R.drawable.bebida));
+
+        //Activación de reyclerview y asignación del adaapter
+        rcvVista = findViewById(R.id.recyclerView);
+        rcvVista.setLayoutManager(new LinearLayoutManager(this));
+        rcvVista.setAdapter(new MyAdapter(alItems, getApplicationContext()));
+
     }
 }
