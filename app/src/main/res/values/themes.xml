@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.RestauranteVentas" parent="Theme.AppCompat.DayNight">
+    <style name="Base.Theme.RestauranteVentas" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/bar_color</item>
         <item name="android:textColorPrimary">@color/white</item>
