@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/gray"
+    android:background="@color/background"
     >
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Carta de productos"
         android:textSize="30dp"
-        android:textColor="@color/black"
+        android:textColor="@color/title_Color"
         android:gravity="center"
         android:layout_margin="20dp"
         android:textStyle="bold"

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Declaración de variables
     RecyclerView rcvVista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         alItems.add(new ProductosItems("Malteada", "$2.001", R.drawable.bebida));
         alItems.add(new ProductosItems("Café", "$2.002", R.drawable.bebida));
 
-        //Activación de reyclerview y asignación del adaapter
+        //Activación de reyclerview y asignación del adapter
         rcvVista = findViewById(R.id.recyclerView);
         rcvVista.setLayoutManager(new LinearLayoutManager(this));
         rcvVista.setAdapter(new MyAdapter(alItems, getApplicationContext()));

@@ -2,6 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#EFEFEF</color>
+    //Estilos de colores propios
+    <color name="background">#EFEFEF</color>
     <color name="price_color">#494949</color>
+    <color name="bar_color">#888cf4</color>
+    <color name="text_color">#6A8AC8</color>
+    <color name="title_Color">#494949</color>
+
 </resources>

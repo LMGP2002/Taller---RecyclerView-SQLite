@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyViewHolder extends RecyclerView.ViewHolder{
+    //Declaración de variables
     TextView txtNombre, txtPrecio;
     ImageView imgFoto;
     public MyViewHolder(@NonNull View itemView) {

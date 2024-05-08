@@ -2,7 +2,10 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.RestauranteVentas" parent="Theme.AppCompat.DayNight">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/bar_color</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:statusBarColor">@color/bar_color</item>
+
     </style>
 
     <style name="Theme.RestauranteVentas" parent="Base.Theme.RestauranteVentas" />
