@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#EC0F0F</color>
     //Estilos de colores propios
     <color name="background">#EFEFEF</color>
     <color name="price_color">#494949</color>

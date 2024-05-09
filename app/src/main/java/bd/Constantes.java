@@ -1,6 +1,7 @@
 package bd;
 
 public class Constantes {
+
     // Nombre de la base de datos
     public static final String NOMBRE_BD = "Ventas.bd";
     // Versión de la base de datos
@@ -16,6 +17,7 @@ public class Constantes {
             "[tipo_producto] TEXT  NOT NULL)";
     // Sentencia SQL para eliminar
     public static final String ELIMINAR_TABLA_PRODUCTO = "DROP TABLE IF EXISTS [" + TABLA_PRODUCTO + "]";
+
 
     // Nombre de la tabla de ventas
     public static final String TABLA_VENTA = "Venta";

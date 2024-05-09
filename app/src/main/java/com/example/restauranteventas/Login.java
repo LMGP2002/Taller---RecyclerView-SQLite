@@ -1,5 +1,6 @@
 package com.example.restauranteventas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +38,7 @@ public class Login extends AppCompatActivity {
         String pass=txtPass.getText().toString();
         if(!user.isEmpty()&&!pass.isEmpty()){
             if(user.equals(ConstantesLogin.user)&&pass.equals(ConstantesLogin.pass)){
-                Toast.makeText(this, "Inicio sesión", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,SeleccionCartaProductos.class));
             }else{
                 Toast.makeText(this, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show();
             }
