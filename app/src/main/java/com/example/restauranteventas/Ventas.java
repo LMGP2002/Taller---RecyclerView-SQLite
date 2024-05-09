@@ -134,33 +134,4 @@ public class Ventas extends AppCompatActivity {
         }
     }
 
-    /*public void listar(View view) {
-        Toast.makeText(this, "listando", Toast.LENGTH_SHORT).show();
-
-        try{
-            //Conexión
-            DBHelper helper = new DBHelper(this);
-            //Objeto para leer los datos
-            SQLiteDatabase data_base = helper.getReadableDatabase();
-
-            //Cursor con el resultado de la consulta
-            Cursor cursor = data_base.rawQuery("SELECT id,id_producto,cantidad FROM "+
-                    Constantes.TABLA_VENTA,null);
-
-
-
-            if(cursor!=null && cursor.getCount()>0){
-                while (cursor.moveToNext()){
-                    Log.i("venta", "id: "+cursor.getInt(0)+" id_p: "+cursor.getInt(1)+" cantidad: "+cursor.getInt(2));
-                }
-            }
-            else{
-                Toast.makeText(this,"VENTAS INEXISTENTES",Toast.LENGTH_LONG).show();
-            }
-
-        }
-        catch (Exception ex){
-            Toast.makeText(this,"Error general" + ex.getMessage(),Toast.LENGTH_LONG).show();
-        }
-    }*/
 }
