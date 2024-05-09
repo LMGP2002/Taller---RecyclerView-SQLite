@@ -42,6 +42,7 @@
 
     <Button
         android:id="@+id/btnBebidas"
+        android:textColor="@color/white"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:text="@string/btn_bebidas"
@@ -53,6 +54,7 @@
         app:cornerRadius = "40dp"/>
 
     <Button
+        android:textColor="@color/white"
         android:id="@+id/btnPlatos"
         android:layout_width="300dp"
         android:layout_height="60dp"
