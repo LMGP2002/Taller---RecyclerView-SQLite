@@ -45,14 +45,14 @@
 
         />
 
-    <!--  <Button
-          android:id="@+id/button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="LISTAR VENTAS"
-          android:onClick="listar"
-          android:layout_below="@+id/recyclerView"
-          />-->
+  <!--  <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTAR VENTAS"
+        android:onClick="listar"
+        android:layout_below="@+id/recyclerView"
+        />-->
 
 
 </RelativeLayout>
