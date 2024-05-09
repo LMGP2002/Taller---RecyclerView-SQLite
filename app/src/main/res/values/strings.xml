@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Restaurante Flor</string>
+
+    //Recursos login
+    <string name="title_login">Login</string>
+    <string name="hint_user">Usuario</string>
+    <string name="hint_pass">Contraseña</string>
+    <string name="btn_login">Ingresar</string>
+    <string name="description">Disfruta de los mejores platos y bebidas</string>
+
+
+    //Recursos Selección Carta
+    <string name="title_seleccion_carta">Seleccione la carta</string>
+    <string name="btn_bebidas">Bebidas</string>
+    <string name="btn_platos">Platos</string>
+
+    //Recursos Ventas
+    <string name="title_ventas">Carta de productos</string>
+
+    //Recursos Productos Items
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_precio">Precio</string>
+    <string name="hint_cantidad">Cantidad: 0</string>
+
+
 </resources>

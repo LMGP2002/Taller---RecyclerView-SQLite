@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyViewHolder extends RecyclerView.ViewHolder{
     //Declaración de variables
-    TextView txtNombre, txtPrecio;
+    TextView txtNombre, txtPrecio,txtCantidad;
     ImageView imgFoto;
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -17,6 +17,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder{
         //Relación con elementos del layout
         txtNombre = itemView.findViewById(R.id.txtNombre);
         txtPrecio = itemView.findViewById(R.id.txtPrecio);
+        txtCantidad = itemView.findViewById(R.id.txtCantidad);
         imgFoto = itemView.findViewById(R.id.imgFoto);
 
     }

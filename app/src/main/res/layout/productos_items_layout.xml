@@ -25,8 +25,9 @@
                 android:id="@+id/imgFoto"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
+                android:layout_marginRight="5dp"
                 android:layout_centerVertical="true"
-                app:srcCompat="@drawable/bebida"
+                app:srcCompat="@drawable/platos"
                 android:layout_alignParentLeft="true"
                 />
 
@@ -47,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:hint="Nombre"
+                    android:hint="@string/hint_nombre"
                     android:textColor="@color/text_color"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -58,12 +59,23 @@
                     android:id="@+id/txtPrecio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Precio"
+                    android:hint="@string/hint_precio"
                     android:textColor="@color/price_color"
                     android:textSize="18sp"></TextView>
 
 
             </LinearLayout>
+            <TextView
+                android:id="@+id/txtCantidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_cantidad"
+                android:textColor="@color/price_color"
+                android:textSize="18sp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                ></TextView>
 
 
         </RelativeLayout>

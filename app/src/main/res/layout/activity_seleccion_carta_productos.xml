@@ -31,7 +31,7 @@
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seleccione la carta"
+        android:text="@string/title_seleccion_carta"
         android:layout_below="@id/imgOrder"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
@@ -41,10 +41,10 @@
         />
 
     <Button
+        android:id="@+id/btnBebidas"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:id="@+id/btnBebidas"
-        android:text="Bebidas"
+        android:text="@string/btn_bebidas"
         android:textSize="18sp"
         android:backgroundTint="@color/btn_color"
         android:layout_below="@id/txtTitle"
@@ -53,10 +53,10 @@
         app:cornerRadius = "40dp"/>
 
     <Button
+        android:id="@+id/btnPlatos"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:id="@+id/btnPlatos"
-        android:text="Platos"
+        android:text="@string/btn_platos"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/btn_color"
