@@ -4,7 +4,7 @@ public class Constantes {
     // Nombre de la base de datos
     public static final String NOMBRE_BD = "Ventas.bd";
     // Versión de la base de datos
-    public static final Integer VERSION_BD = 12;
+    public static final Integer VERSION_BD = 13;
     // Nombre de la tabla de productos
     public static final String TABLA_PRODUCTO = "Producto";
     // Sentencia SQL para crear la tabla de productos
