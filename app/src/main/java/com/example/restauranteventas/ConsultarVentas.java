@@ -158,13 +158,11 @@ public class ConsultarVentas extends AppCompatActivity {
             // Realizar la consulta SQL para obtener las ventas
             arrayVentas.clear(); // Limpiar el array de ventas
             for (Producto producto : arrayProductos) {
-                Cursor cursor2 = data_base.rawQuery("SELECT id, id_producto, cantidad FROM " +
-                        Constantes.TABLA_VENTA + " WHERE id_producto=?", new String[]{String.valueOf(producto.getId())}, null);
+                Cursor cursor2 = data_base.rawQuery("SELECT id, id_producto, SUM(cantidad) FROM " +
+                        Constantes.TABLA_VENTA + " WHERE id_producto=?", new String[]{String.valueOf(producto.getId())});
 
                 if (cursor2 != null && cursor2.moveToFirst()) {
-                    do {
-                        arrayVentas.add(new Venta(cursor2.getInt(0), cursor2.getInt(1), cursor2.getInt(2)));
-                    } while (cursor2.moveToNext());
+                    arrayVentas.add(new Venta(cursor2.getInt(0), cursor2.getInt(1), cursor2.getInt(2)));
                 }
 
                 // Cerrar el cursor de ventas
@@ -196,20 +194,22 @@ public class ConsultarVentas extends AppCompatActivity {
 
                 // Realizar la consulta SQL para obtener el producto correspondiente a la venta
                 Cursor cursor = data_base.rawQuery("SELECT nombre, precio FROM " +
-                        Constantes.TABLA_PRODUCTO + " WHERE id=?", new String[]{String.valueOf(venta.getId_producto())}, null);
+                        Constantes.TABLA_PRODUCTO + " WHERE id=?", new String[]{String.valueOf(venta.getId_producto())});
 
                 if (cursor != null && cursor.moveToFirst()) {
                     String nombreProducto = cursor.getString(0);
                     float precioProducto = cursor.getFloat(1);
+                    int cantidad = venta.getCantidad();
 
-                    float precioVenta = precioProducto * venta.getCantidad(); // Calcular el precio de esta venta
-                    totalVentas += precioVenta; // Sumar al total de ventas
+                    float totalVenta = precioProducto * cantidad; // Calcular el total de esta venta
+
+                    totalVentas += totalVenta; // Sumar al total de ventas
 
                     // Formatear el precio como moneda colombiana
-                    String precioFormateado = formatoMoneda.format(precioProducto);
+                    String totalFormateado = formatoMoneda.format(totalVenta);
 
                     // Agregar la venta al ArrayList de cadenas con el nombre del producto
-                    arrayListadoVentas.add(nombreProducto + " Cantidad: " + venta.getCantidad() + " Precio Unitario: " + precioFormateado);
+                    arrayListadoVentas.add(nombreProducto + "   Cantidad: " + cantidad + "   SubTotal: " + totalFormateado);
 
                     cursor.close();
                 }
