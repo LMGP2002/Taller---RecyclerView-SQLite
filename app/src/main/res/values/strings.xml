@@ -33,7 +33,7 @@
     <string name="bebida">Bebida</string>
 
     //Recursos menú items
-    <string name="vender">Vender</string>
+    <string name="vender">Ventas</string>
     <string name="registrar_prod">Registrar producto</string>
     <string name="consultar_venta">Consultar ventas</string>
     <string name="cerrar_sesion">Cerrar sesión</string>

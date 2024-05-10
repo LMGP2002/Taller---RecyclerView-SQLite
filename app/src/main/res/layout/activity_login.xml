@@ -68,8 +68,9 @@
                     android:layout_height="60dp"
                     android:id="@+id/btnLogin"
                     android:text="@string/btn_login"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:backgroundTint="@color/bar_color"
+                    android:backgroundTint="@color/second_color"
                     android:layout_marginTop="30dp"
                     app:cornerRadius = "20dp"/>
 

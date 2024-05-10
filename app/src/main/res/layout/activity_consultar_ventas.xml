@@ -14,7 +14,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/imgShape"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imgShape"
@@ -22,12 +25,12 @@
         android:layout_height="150dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="56dp"
         android:layout_marginBottom="49dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/app_bar_id"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888"
         app:srcCompat="@drawable/shape" />
 
     <TextView
@@ -37,7 +40,7 @@
         android:layout_marginTop="169dp"
         android:text="@string/consultar_ventas"
         android:textColor="@color/title_Color"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +52,8 @@
         android:layout_height="35dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="30dp"
+        android:textColor="@color/title_Color"
+        android:textSize="16sp"
         android:text="@string/seleccionar_tipo_prod"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerTipoProducto"
         app:layout_constraintEnd_toEndOf="@+id/spinnerTipoProducto"
@@ -86,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="60dp"
+        android:textSize="17sp"
         android:text="@string/total"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"></TextView>
@@ -94,6 +100,9 @@
         android:id="@+id/txtTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+
         android:layout_marginStart="10dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView4"></TextView>

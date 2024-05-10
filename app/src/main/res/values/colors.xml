@@ -6,9 +6,8 @@
     //Estilos de colores propios
     <color name="background">#EFEFEF</color>
     <color name="price_color">#494949</color>
-    <color name="bar_color">#888cf4</color>
-    <color name="btn_color">#3CB8A9</color>
-    <color name="text_color">#6A8AC8</color>
+    <color name="primary_color">#3CB8A9</color>
+    <color name="second_color">#888cf4</color>
     <color name="title_Color">#494949</color>
 
 </resources>

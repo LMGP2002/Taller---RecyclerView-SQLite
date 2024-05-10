@@ -41,7 +41,7 @@ public class SeleccionCartaProductos extends AppCompatActivity {
 
         // Establecer el color de la barra de estado
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bar_color));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.primary_color));
 
         //Asignación de funcionalidad a los botones
         View.OnClickListener seleccionCarta=v->{
@@ -56,12 +56,14 @@ public class SeleccionCartaProductos extends AppCompatActivity {
         btnPlatos.setOnClickListener(seleccionCarta);
 
     }
+
+    //Método para visualizar el menú
     public boolean onCreateOptionsMenu(Menu menu) {
         //Visualización del menú en el ToolBar
         getMenuInflater().inflate(R.menu.menu_main,menu);
         return true;
     }
-
+    //Método para manejar las ociones del menú
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //Click sobre el menú
         if(item.getItemId()==R.id.id_item_config){

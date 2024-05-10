@@ -70,7 +70,7 @@ public class ConsultarVentas extends AppCompatActivity {
 
         // Establecer el color de la barra de estado
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bar_color));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.primary_color));
 
         Toolbar tb = findViewById(R.id.toolbar);//Barra con menú
         setSupportActionBar(tb);//Asignación del ToolBar al Layout, osea que se actva a prtir de lo que tb vaya a determinar

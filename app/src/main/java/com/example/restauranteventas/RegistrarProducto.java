@@ -81,7 +81,7 @@ public class RegistrarProducto extends AppCompatActivity {
 
         // Establecer el color de la barra de estado
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bar_color));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.primary_color));
 
         // Inicializar los ArrayLists
         arrayProductos = new ArrayList<>();
@@ -115,7 +115,7 @@ public class RegistrarProducto extends AppCompatActivity {
             if (txtNombre.getText().toString().isEmpty() || txtPrecio.getText().toString().isEmpty() ) {
                 Toast.makeText(this, "Campos vacíos", Toast.LENGTH_LONG).show();
             }else if(tipo_producto.equals("Seleccione")) {
-                Toast.makeText(this, "Verifique el tipo de producto", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Seleccione el tipo de producto", Toast.LENGTH_LONG).show();
             }else{
                 registrarProducto();
             }
@@ -167,7 +167,7 @@ public class RegistrarProducto extends AppCompatActivity {
 
             // Notificar el resultado de la operación
             if (id > 0) {
-                Toast.makeText(this, "Producto almacenado con exito", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Producto almacenado con éxito", Toast.LENGTH_LONG).show();
                 limpiarCampos();
                 arrayProductos.clear(); // Limpiar el array de productos
                 arrayListadoProductos.clear(); // Limpiar el array de strings
@@ -212,7 +212,7 @@ public class RegistrarProducto extends AppCompatActivity {
             for (Producto producto : arrayProductos) { // Recorrer cada producto en el ArrayList
                 // Formatear el precio como moneda colombiana y agregarlo al ArrayList de cadenas
                 String precioFormateado = formatoMoneda.format(producto.getPrecio());
-                arrayListadoProductos.add(producto.getNombre() + "   " + precioFormateado + "   " + producto.getEstado());
+                arrayListadoProductos.add(producto.getNombre() + "   ("+producto.getTipo_producto()+")   " + precioFormateado + "   " + producto.getEstado());
             }
         }
         // Imprimir el contenido del ArrayList de cadenas en el log
