@@ -22,5 +22,27 @@
     <string name="hint_precio">Precio</string>
     <string name="hint_cantidad">Cantidad: 0</string>
 
+    //Recursos consultar ventas
+    <string name="consultar_ventas">Consultar ventas</string>
+    <string name="seleccionar_tipo_prod">Seleccione el tipo de producto</string>
+    <string name="total">Total: </string>
+
+    //Recursos spinner
+    <string name="seleccione">Seleccione</string>
+    <string name="plato">Plato</string>
+    <string name="bebida">Bebida</string>
+
+    //Recursos menú items
+    <string name="vender">Vender</string>
+    <string name="registrar_prod">Registrar producto</string>
+    <string name="consultar_venta">Consultar ventas</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+
+    //Recursor registrar producto
+    <string name="nombre_producto">Nombre producto</string>
+    <string name="precio_producto">Precio producto</string>
+    <string name="tipo_producto">Tipo producto</string>
+    <string name="btn_registrar">Registrar</string>
+
 
 </resources>
