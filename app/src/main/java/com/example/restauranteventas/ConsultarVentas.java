@@ -1,5 +1,6 @@
 package com.example.restauranteventas;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -41,9 +42,15 @@ public class ConsultarVentas extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     Spinner spinnerTipoProducto;
     String tipo_producto = "";
+
+    float totalVentas;
+    String totalFormateado ="";
     // ArrayLists para almacenar los productos y la lista de productos
     ArrayList<Producto> arrayProductos;
     ArrayList<String> arrayListadoProductos;
+    ArrayList<Venta> arrayVentas;
+    ArrayList<String> arrayListadoVentas;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +71,8 @@ public class ConsultarVentas extends AppCompatActivity {
         // Inicializar los ArrayLists
         arrayProductos = new ArrayList<>();
         arrayListadoProductos = new ArrayList<>();
+        arrayVentas = new ArrayList<>();
+        arrayListadoVentas = new ArrayList<>();
 
         // Obtener una instancia de la ventana actual
         Window window = getWindow();
@@ -76,7 +85,7 @@ public class ConsultarVentas extends AppCompatActivity {
         setSupportActionBar(tb);//Asignación del ToolBar al Layout, osea que se actva a prtir de lo que tb vaya a determinar
 
         // Consultar los productos existentes y mostrarlos en la ListView
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayListadoProductos);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayListadoVentas);
         lvProductos.setAdapter(adapter);
 
         // Configurar el adaptador y el listener para el spinner de tipo de producto
@@ -87,9 +96,12 @@ public class ConsultarVentas extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 tipo_producto = adapterView.getItemAtPosition(i).toString();
                 // Código para manejar la selección del tipo de producto
-                arrayProductos.clear(); // Limpiar el array de productos
-                arrayListadoProductos.clear(); // Limpiar el array de strings
-                consultarProductos(); // Obtener la lista actualizada
+                arrayVentas.clear(); // Limpiar el array de productos
+                arrayListadoVentas.clear(); // Limpiar el array de strings
+
+                consultarVentas(); // Obtener la lista actualizada
+
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -120,7 +132,7 @@ public class ConsultarVentas extends AppCompatActivity {
     }
 
     // Método para consultar los productos existentes en la base de datos
-    private void consultarProductos() {
+       private void consultarVentas() {
         try {
             // Conexión a la base de datos
             DBHelper helper = new DBHelper(this);
@@ -128,47 +140,92 @@ public class ConsultarVentas extends AppCompatActivity {
 
             // Realizar la consulta SQL para obtener los productos
             Cursor cursor = data_base.rawQuery("SELECT id, nombre, precio, estado, tipo_producto FROM " +
-                    Constantes.TABLA_PRODUCTO+" WHERE tipo_producto=?", new String[]{tipo_producto}, null);
-            // Procesar los resultados de la consulta
-            if (cursor != null && cursor.getCount() > 0) {
-                while (cursor.moveToNext()) {
+                    Constantes.TABLA_PRODUCTO + " WHERE tipo_producto=?", new String[]{tipo_producto}, null);
+
+            // Procesar los resultados de la consulta de productos
+            arrayProductos.clear(); // Limpiar el array de productos
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
                     arrayProductos.add(new Producto(cursor.getInt(0), cursor.getString(1), cursor.getFloat(2), cursor.getString(3), cursor.getString(4)));
-                }
-                generarLista();
-            }else{
-                arrayProductos.clear(); // Limpiar el array de productos
-                arrayListadoProductos.clear(); // Limpiar el array de strings
-                generarLista(); // Actualizar la lista después de limpiarla
+                } while (cursor.moveToNext());
             }
+
+            // Cerrar el cursor de productos
+            if (cursor != null) {
+                cursor.close();
+            }
+
+            // Realizar la consulta SQL para obtener las ventas
+            arrayVentas.clear(); // Limpiar el array de ventas
+            for (Producto producto : arrayProductos) {
+                Cursor cursor2 = data_base.rawQuery("SELECT id, id_producto, cantidad FROM " +
+                        Constantes.TABLA_VENTA + " WHERE id_producto=?", new String[]{String.valueOf(producto.getId())}, null);
+
+                if (cursor2 != null && cursor2.moveToFirst()) {
+                    do {
+                        arrayVentas.add(new Venta(cursor2.getInt(0), cursor2.getInt(1), cursor2.getInt(2)));
+                    } while (cursor2.moveToNext());
+                }
+
+                // Cerrar el cursor de ventas
+                if (cursor2 != null) {
+                    cursor2.close();
+                }
+            }
+            txtTotal.setText("");
+            totalFormateado ="";
+            generarLista();
         } catch (Exception ex) {
             Toast.makeText(this, "Error general" + ex.getMessage(), Toast.LENGTH_LONG).show();
+
         }
     }
     private void generarLista() {
         // Crear un formateador de moneda para el formato colombiano
         NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(new Locale("es", "CO"));
-        float totalPorTipo = 0f; // Variable para almacenar la suma de precios por tipo
+        // Reiniciar totalVentas a 0 antes de calcular las ventas para el nuevo tipo de producto
+        totalVentas = 0f;
 
-        if (!arrayProductos.isEmpty()) { // Si el ArrayList de productos no está vacío
-            for (Producto producto : arrayProductos) { // Recorrer cada producto en el ArrayList
-                // Formatear el precio como moneda colombiana y agregarlo al ArrayList de cadenas
-                String precioFormateado = formatoMoneda.format(producto.getPrecio());
+        arrayListadoVentas.clear(); // Limpiar el array de strings
 
-                // Sumar el precio al total por tipo
-                if (producto.getTipo_producto().equals(tipo_producto)) {
-                    totalPorTipo += producto.getPrecio();
+        if (!arrayVentas.isEmpty()) { // Si el ArrayList de ventas no está vacío
+            for (Venta venta : arrayVentas) {
+                // Conexión a la base de datos
+                DBHelper helper = new DBHelper(this);
+                SQLiteDatabase data_base = helper.getReadableDatabase();
+
+                // Realizar la consulta SQL para obtener el producto correspondiente a la venta
+                Cursor cursor = data_base.rawQuery("SELECT nombre, precio FROM " +
+                        Constantes.TABLA_PRODUCTO + " WHERE id=?", new String[]{String.valueOf(venta.getId_producto())}, null);
+
+                if (cursor != null && cursor.moveToFirst()) {
+                    String nombreProducto = cursor.getString(0);
+                    float precioProducto = cursor.getFloat(1);
+
+                    float precioVenta = precioProducto * venta.getCantidad(); // Calcular el precio de esta venta
+                    totalVentas += precioVenta; // Sumar al total de ventas
+
+                    // Formatear el precio como moneda colombiana
+                    String precioFormateado = formatoMoneda.format(precioProducto);
+
+                    // Agregar la venta al ArrayList de cadenas con el nombre del producto
+                    arrayListadoVentas.add(nombreProducto + " Cantidad: " + venta.getCantidad() + " Precio Unitario: " + precioFormateado);
+
+                    cursor.close();
                 }
-                arrayListadoProductos.add(producto.getNombre() + "   " + precioFormateado + "   " + producto.getEstado());
 
+                data_base.close();
             }
         }
-        // Formatear el total por tipo como moneda colombiana
-        String totalFormateado = formatoMoneda.format(totalPorTipo);
 
-        // Mostrar el total por tipo en el TextView
+        // Formatear el total de ventas como moneda colombiana
+        totalFormateado = formatoMoneda.format(totalVentas);
+
+        // Mostrar el total de ventas en el TextView
         txtTotal.setText(totalFormateado);
 
         // Notificar al Adapter que los datos han cambiado
         adapter.notifyDataSetChanged();
     }
+
 }
