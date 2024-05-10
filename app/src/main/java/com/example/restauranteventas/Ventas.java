@@ -155,7 +155,7 @@ public class Ventas extends AppCompatActivity {
                         // Formatear el precio como moneda colombiana y agregarlo al ArrayList de cadenas
                         String precioFormateado = formatoMoneda.format(cursor.getFloat(2));
 
-                        arrProductos.add(new ProductosItems(cursor.getInt(0),cursor.getString(1), precioFormateado, R.drawable.bebida,0));
+                        arrProductos.add(new ProductosItems(cursor.getInt(0),cursor.getString(1), precioFormateado, R.drawable.platos,0));
                     }
                 }
 
