@@ -13,12 +13,13 @@
         android:theme="@style/Theme.RestauranteVentas"
         tools:targetApi="31">
         <activity
-            android:name=".SeleccionCartaProductos"
-            android:exported="false">
-
-        </activity>
+            android:name=".RegistrarProducto"
+            android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".ConsultarVentas"
+            android:exported="false" />
+        <activity
+            android:name=".SeleccionCartaProductos"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +28,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Ventas"
-            android:exported="false"></activity>
+            android:name=".Login"
+            android:exported="false" />
+
     </application>
 
 </manifest>
